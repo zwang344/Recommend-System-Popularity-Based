@@ -1,0 +1,45 @@
+import pandas as pd
+
+#open triplets file
+triplets_file = pd.read_table('...') 
+triplets = pd.DataFrame(triplets_file)
+triplets.columns=['user','song','playcount']
+
+song_count = {}
+for i in range(len(triplets[['song','playcount']].index)):
+    if new.iloc[i][0] not in song_count:
+        song_count[new.iloc[i][0]] = new.iloc[i][1]
+    else:
+        song_count[new.iloc[i][0]] = song_count[new.iloc[i][0]] + new.iloc[i][1]
+
+song_count_sorted = sorted(song_count.keys(), key = lambda k: song_count[k], reverse=True)
+
+user_song = {}
+for i in range(len(triplets[['user','song']].index)):
+    if newnew.iloc[i][0] not in user_song:
+        user_song[newnew.iloc[i][0]] = []
+        user_song[newnew.iloc[i][0]] = user_song[newnew.iloc[i][0]].append(newnew.iloc[i][1])
+    else:
+        user_song[newnew.iloc[i][0]] = user_song[newnew.iloc[i][0]]+','+newnew.iloc[i][1]
+
+#convert dictionary value type from string to list
+for i in user_song.keys():
+    user_song[i] = user_song[i].split(',')
+
+user_file = pd.read_table('...')
+
+#create a user list
+users = []
+for i in pd.DataFrame(file2).values:
+    users.append(i[0])
+    
+#final recommended song list
+recommended_song = {}
+for user in users:
+    recommended = []
+    for song in song_count_sorted:
+        if song not in user_song[user]:
+            recommended.append(song)
+        if len(recommended) >= 5:
+            break
+    recommended_song[user] = recommended
